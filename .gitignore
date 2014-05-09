@@ -1,3 +1,5 @@
 /vendor/*
 token*
 config.php
+composer.lock
+error_log

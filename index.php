@@ -29,9 +29,11 @@ if (file_exists($app_file) && $access_token = unserialize(file_get_contents($app
 
     $mau = array('mamaauuuu...', 'prr...', 'prrr...', 'cruuñaauu...', 'maaaaaau...','mmau...', 'prrrñau...', 'ñau...', 'miaaaau...', 'MIAAAAAAAAUUUU...');
     $mmau = '';
-    $hums = array('@leprosy', '@aindir', '@angebrik');
+    $hums = array('@aindir', '@leprosy', '@aindir', '@angebrik', '@_Natilla');
+    $emos = array(':D', 'XD', ':P');
     $toks = rand(2, 10);
-    $cc = rand(0, 50);
+    $cc = rand(0, 30);
+    $emoc = rand(0, 30);
 
     if ($cc < 10) {
         $mmau .= $hums[rand(0, count($hums) - 1)] . ' ';
@@ -39,6 +41,10 @@ if (file_exists($app_file) && $access_token = unserialize(file_get_contents($app
 
     for ($i = 0; $i < $toks; ++$i) {
         $mmau .= $mau[rand(0, count($mau) - 1)];
+    }
+
+    if ($emoc < 10) {
+        $mmau .= $emos[rand(0, count($emos) - 1)];
     }
 
     $connection = new \TwitterOAuth\Api($consumer_key, $consumer_secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
@@ -68,3 +74,4 @@ if (file_exists($app_file) && $access_token = unserialize(file_get_contents($app
 }
 
 die();
+
