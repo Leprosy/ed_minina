@@ -13,14 +13,17 @@ $consumer_secret = "ORNx9CPK38Sph8mBnnvufOSa85H93pj2BrYTUOiuLUaqNLDJU5";
 function getMau($withcc = True) {
     $maus = array('mamaauuuu...', 'prr...', 'prrr...', 'cruuñaauu...', 'maaaaaau...','mmau...', 'prrrñau...', 'ñau...', 'miaaaau...', 'MIAAAAAAAAUUUU...');
     $mau = '';
-    $hums = array('@aindir', '@leprosy', '@aindir', '@angebrik', '@_Natilla');
     $emos = array(':D', 'XD', ':P', 'xD', ':@');
     $mausP = rand(2, 6);
-    $humsP = rand(0, 30);
     $emosP = rand(0, 30);
 
-    if ($humsP < 10 && $withcc) {
-        $mau .= $hums[rand(0, count($hums) - 1)] . ' ';
+    if ($withcc) {
+        $hums = array('@aindir', '@leprosy', '@aindir', '@angebrik', '@_Natilla');
+        $humsP = rand(0, 30);
+
+        if ($humsP < 10) {
+            $mau .= $hums[rand(0, count($hums) - 1)] . ' ';
+        }
     }
 
     for ($i = 0; $i < $mausP; ++$i) {
@@ -45,7 +48,7 @@ if (file_exists($app_file) && $access_token = unserialize(file_get_contents($app
         fwrite($lock, time());
     }
 
-    $mau = getMau();
+    /* Connect */
     $connection = new \TwitterOAuth\Api($consumer_key, $consumer_secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
 
     /* Answer calls */
@@ -58,6 +61,7 @@ if (file_exists($app_file) && $access_token = unserialize(file_get_contents($app
     }
 
     /* Send a tweet */
+    $mau = getMau();
     var_dump("POSTING", $connection->post('statuses/update', array('status' => $mau)));
 } else {
     if (isset($_SESSION['oauth_token'])) {
