@@ -53,6 +53,7 @@ if (file_exists($app_file) && $access_token = unserialize(file_get_contents($app
         if (time() - strtotime($twit->created_at) < $app_time) {
             $mau = '@' . $twit->user->screen_name . ' ' . getMau(false);
             var_dump("REPLY", $connection->post('statuses/update', array('status' => $mau, 'in_reply_to_status_id' => $twit->id)));
+            sleep(1);
         }
     }
 
