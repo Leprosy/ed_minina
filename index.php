@@ -18,7 +18,7 @@ function getMau($withcc = True) {
     $emosP = rand(0, 30);
 
     if ($withcc) {
-        $hums = array('@aindir', '@leprosy', '@aindir', '@angebrik', '@_Natilla');
+        $hums = array('@aindir', '@leprosy', '@aindir', '@angebrik', '@_Natilla', '@su_cube', '@irencoret', '@injenieroBarsa');
         $humsP = rand(0, 30);
 
         if ($humsP < 10) {
